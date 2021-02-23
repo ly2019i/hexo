@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>day1</title>
+    <url>/2021/02/19/day1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Linux下安装pcre</title>
+    <url>/2021/02/19/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/</url>
+    <content><![CDATA[<p>PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。</p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h5><h6 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h6><pre><code>wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz 
+</code></pre>
+<h6 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h6><pre><code>tar -zxf pcre-8.10.tar.gz
+</code></pre>
+<h6 id="进入解压好的目录"><a href="#进入解压好的目录" class="headerlink" title="进入解压好的目录"></a>进入解压好的目录</h6><pre><code>cd pcre-8.10.tar.gz
+</code></pre>
+<h6 id="执行配置"><a href="#执行配置" class="headerlink" title="执行配置"></a>执行配置</h6><pre><code>./configure
+</code></pre>
+<h6 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h6><pre><code>make &amp;&amp; make install
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux下安装和配置nginx</title>
+    <url>/2021/02/19/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/</url>
+    <content><![CDATA[<h2 id="Nginx简介"><a href="#Nginx简介" class="headerlink" title="Nginx简介"></a>Nginx简介</h2><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>Nginx是一款轻量级Web服务器，也是一款反向代理服务器</p>
+<blockquote>
+<p>官网：<a href="http://nginx.org/">http://nginx.org/</a><br>中文文档: <a href="http://www.nginx.cn/doc/">http://www.nginx.cn/doc/</a></p>
+</blockquote>
+<h4 id="Nginx能干什么"><a href="#Nginx能干什么" class="headerlink" title="Nginx能干什么?"></a>Nginx能干什么?</h4><p>Nginx能干的事情很多,这里简要罗列一-些：</p>
+<p>可直接支持Rails和PHP的程序<br>可作为HTTP反向代理服务器<br>作为负载均衡服务器<br>作为邮件代理服务器<br>帮助实现前端动静分离</p>
+<h4 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h4><h5 id="Nginx下载"><a href="#Nginx下载" class="headerlink" title="Nginx下载"></a>Nginx下载</h5><blockquote>
+<p>官网下载：<a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a></p>
+</blockquote>
+<h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h5><h6 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h6><pre><code>wget http://nginx.org/download/nginx-1.12.2.tar.gz
+</code></pre>
+<h6 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h6><pre><code>tar -zxvf nginx-1.12.2.tar.gz
+</code></pre>
+<h6 id="进入解压好的目录"><a href="#进入解压好的目录" class="headerlink" title="进入解压好的目录"></a>进入解压好的目录</h6><pre><code>cd nginx-1.12.2/
+</code></pre>
+<h6 id="执行配置"><a href="#执行配置" class="headerlink" title="执行配置"></a>执行配置</h6><pre><code>./configure
+</code></pre>
+<h6 id="编译安装-默认安装在-usr-local-nginx"><a href="#编译安装-默认安装在-usr-local-nginx" class="headerlink" title="编译安装(默认安装在/usr/local/nginx)"></a>编译安装(默认安装在/usr/local/nginx)</h6><pre><code>make &amp;&amp; make install
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>初始化服务器</title>
+    <url>/2021/02/19/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="更新服务器"><a href="#更新服务器" class="headerlink" title="更新服务器"></a>更新服务器</h2><pre><code>apt update
+</code></pre>
+<h3 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h3><pre><code>apt install npm
+</code></pre>
+]]></content>
+  </entry>
+</search>

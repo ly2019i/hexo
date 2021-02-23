@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-02-19T12:42:22.970Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初始化服务器</title>
+    <link href="http://example.com/2021/02/19/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2021/02/19/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-02-19T12:40:47.321Z</published>
+    <updated>2021-02-19T12:42:22.970Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;更新服务器&quot;&gt;&lt;a href=&quot;#更新服务器&quot; class=&quot;headerlink&quot; title=&quot;更新服务器&quot;&gt;&lt;/a&gt;更新服务器&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;apt update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;安装npm&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下安装pcre</title>
+    <link href="http://example.com/2021/02/19/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/"/>
+    <id>http://example.com/2021/02/19/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/</id>
+    <published>2021-02-19T11:06:01.852Z</published>
+    <updated>2021-02-19T12:46:16.606Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。&lt;/p&gt;
+&lt;h5 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下安装和配置nginx</title>
+    <link href="http://example.com/2021/02/19/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/"/>
+    <id>http://example.com/2021/02/19/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/</id>
+    <published>2021-02-19T10:49:38.290Z</published>
+    <updated>2021-02-19T14:34:19.670Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Nginx简介&quot;&gt;&lt;a href=&quot;#Nginx简介&quot; class=&quot;headerlink&quot; title=&quot;Nginx简介&quot;&gt;&lt;/a&gt;Nginx简介&lt;/h2&gt;&lt;h4 id=&quot;Nginx是什么？&quot;&gt;&lt;a href=&quot;#Nginx是什么？&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>day1</title>
+    <link href="http://example.com/2021/02/19/day1/"/>
+    <id>http://example.com/2021/02/19/day1/</id>
+    <published>2021-02-19T07:47:21.797Z</published>
+    <updated>2021-02-19T07:47:36.271Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/02/14/hello-world/"/>
+    <id>http://example.com/2021/02/14/hello-world/</id>
+    <published>2021-02-14T13:40:20.102Z</published>
+    <updated>2021-02-14T13:40:20.102Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
