@@ -158,7 +158,7 @@
     
     
     <article
-  id="post-服务器的使用"
+  id="post-前端页面一键部署到服务器"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -169,24 +169,99 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/02/19/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"
-    >初始化服务器</a> 
+  <a class="article-title" href="/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+    >前端页面一键部署到服务器</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/02/19/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2021-02-19T12:40:47.321Z" itemprop="datePublished">2021-02-19</time>
+      <a href="/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2021-02-24T13:46:00.000Z" itemprop="datePublished">2021-02-24</time>
 </a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="更新服务器"><a href="#更新服务器" class="headerlink" title="更新服务器"></a>更新服务器</h2><pre><code>apt update
+  <h3 id="通过ssh本地文件给上传到远程服务器"><a href="#通过ssh本地文件给上传到远程服务器" class="headerlink" title="通过ssh本地文件给上传到远程服务器"></a>通过ssh本地文件给上传到远程服务器</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install ssh2-sftp-client -D
 </code></pre>
-<h3 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h3><pre><code>apt install npm
+<h3 id="新建sftp-js文件"><a href="#新建sftp-js文件" class="headerlink" title="新建sftp.js文件"></a>新建sftp.js文件</h3><p>在文件夹根目录新建一个sftp.js文件</p>
+<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><pre><code>const Client = require(&quot;ssh2-sftp-client&quot;);
+const path = require(&quot;path&quot;);
+// const path = require(&#39;path&#39;)
+
+// 先配置一下,个人习惯
+const config = &#123;
+  path: &#123;
+    // 远程地址 从根目录开始的路径
+    romotePath: &quot;/data1/web/blog&quot;,
+
+    // 本地地址 相对于当前文件夹所在的路径
+    localPath: path.join(__dirname, &quot;./public&quot;).replace(/\\/g, &quot;/&quot;),
+  &#125;,
+  romote: &#123;
+    // 服务器 ip 地址
+    host: &quot;**************&quot;,
+    // 端口号,默认是 22
+    port: &quot;22&quot;,
+    // 登录的用户名
+    username: &quot;root&quot;,
+    // 登录密码
+    password: &quot;***************&quot;,
+  &#125;,
+&#125;;
+
+/* 主方法
+* @method main
+* @param&#123;String&#125; localPath 本地路径,不用 path 模块,直接字符串就好了,这个包自己有格式化的
+* @param&#123;String&#125; romotePath 远程路径
+* @return&#123;undefined&#125; 返回个*
+*/
+
+function main(localPath, romotePath) &#123;
+  // 实例化
+  const sftp = new Client();
+  sftp
+    .connect(config.romote)
+    //  先递归删除服务器上的文件夹
+    .then(() =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 删除服务器缓存中... -----------------------------&quot;
+      );
+      return sftp.rmdir(romotePath, true);
+    &#125;)
+    .then((data) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 删除完成 ----------------------------&quot;
+      );
+    &#125;)
+    .then(() =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 连接成功,上传中... -----------------------------&quot;
+      );
+      return sftp.uploadDir(localPath, romotePath);
+    &#125;)
+    .then((data) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 上传完成,及时清除缓存 ----------------------------&quot;
+      );
+    &#125;)
+    .catch((err) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 失败了!出事了!快看看怎么回事! -----------------------------&quot;
+      );
+      console.log(err);
+    &#125;)
+    .finally(() =&gt; &#123;
+      // 断开连接
+      sftp.end();
+    &#125;);
+&#125;
+main(config.path.localPath, config.path.romotePath);
+</code></pre>
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><p>在当前文件夹中打开终端输入</p>
+<pre><code>node ./sftp.js
 </code></pre>
  
       <!-- reward -->
@@ -198,6 +273,405 @@
     
     <footer class="article-footer">
        
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-爱生气的书店老板"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/"
+    >爱生气的书店老板</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-date">
+  <time datetime="2021-02-23T13:17:00.000Z" itemprop="datePublished">2021-02-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="爱生气的书店老板"><a href="#爱生气的书店老板" class="headerlink" title="爱生气的书店老板"></a>爱生气的书店老板</h3><p>今天，书店老板有一家店打算试营业 customers.length 分钟。每分钟都有一些顾客（customers[i]）会进入书店，所有这些顾客都会在那一分钟结束后离开。</p>
+<p>在某些时候，书店老板会生气。 如果书店老板在第 i 分钟生气，那么 grumpy[i] = 1，否则 grumpy[i] = 0。 当书店老板生气时，那一分钟的顾客就会不满意，不生气则他们是满意的。</p>
+<p>书店老板知道一个秘密技巧，能抑制自己的情绪，可以让自己连续 X 分钟不生气，但却只能使用一次。</p>
+<p>请你返回这一天营业下来，最多有多少客户能够感到满意的数量。</p>
+<h6 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h6><pre><code>输入：customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], X = 3
+输出：16
+解释：
+书店老板在最后 3 分钟保持冷静。
+感到满意的最大客户数量 = 1 + 1 + 1 + 1 + 7 + 5 = 16.
+</code></pre>
+<p> </p>
+<h6 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h6><pre><code>1 &lt;= X &lt;= customers.length == grumpy.length &lt;= 20000
+0 &lt;= customers[i] &lt;= 1000
+0 &lt;= grumpy[i] &lt;= 1
+</code></pre>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ol>
+<li>既然要算出最多有多少客户能感到满意的数量，那么可以先把必定满意也就是grumpy[i]的值为0的客户数量加起来，然后把customers[i]置为0</li>
+<li>利用窗口算法，找到在customers中X个值之和最大的值</li>
+</ol>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><pre><code>/**
+* @param &#123;number[]&#125; customers
+* @param &#123;number[]&#125; grumpy
+* @param &#123;number&#125; X
+* @return &#123;number&#125;
+*/
+var maxSatisfied = function(customers, grumpy, X) &#123;
+  let len = customers.length;
+  let cur = 0;
+  for(let i = 0;i &lt; len;i++)&#123;
+    if(grumpy[i] === 0) &#123;
+      cur += customers[i];
+      customers[i] = 0;
+    &#125;
+  &#125;
+  let max = 0,sum = 0;
+  for(let right = 0,left = 0;right &lt; len;right++)&#123;
+    sum += customers[right];
+    //  如果right - left的值大于X - 1 说明此时sum的值为X个值的和 那么就将当前窗口向右移动一个位置 也就是减去左边第一个值并将left + 1
+    if(right - left + 1 &gt; X) sum -= customers[left++];
+    max = Math.max(max, sum);
+  &#125;
+  return cur + max;
+&#125;;
+</code></pre>
+<h5 id="来源：力扣（LeetCode）"><a href="#来源：力扣（LeetCode）" class="headerlink" title="来源：力扣（LeetCode）"></a>来源：力扣（LeetCode）</h5><blockquote>
+<p>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/grumpy-bookstore-owner">https://leetcode-cn.com/problems/grumpy-bookstore-owner</a></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/" rel="tag">每日打卡</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-git常用命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+    >git常用命令</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2021-02-22T13:17:00.000Z" itemprop="datePublished">2021-02-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><pre><code>git init
+</code></pre>
+<p>在当前目录新建一个Git代码库</p>
+<pre><code>git init [project-name]
+</code></pre>
+<p>新建一个目录，将其初始化为Git代码库</p>
+<pre><code>git clone [url]
+</code></pre>
+<p>下载一个项目和它的整个代码历史</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<pre><code>git config --list
+</code></pre>
+<p>显示当前的Git配置</p>
+<pre><code>git config -e [--global]
+</code></pre>
+<p>编辑Git配置文件</p>
+<pre><code>git config [--global] user.name &quot;[name]&quot;
+git config [--global] user.email &quot;[email address]&quot;
+</code></pre>
+<p>设置提交代码时的用户信息</p>
+<h4 id="增加-删除文件"><a href="#增加-删除文件" class="headerlink" title="增加/删除文件"></a>增加/删除文件</h4><p>添加指定文件到暂存区</p>
+<pre><code>git add [file1] [file2] ...
+</code></pre>
+<p>添加指定目录到暂存区，包括子目录</p>
+<pre><code>git add [dir]
+</code></pre>
+<p>添加当前目录的所有文件到暂存区</p>
+<pre><code>git add .
+</code></pre>
+<p>添加每个变化前，都会要求确认<br>对于同一个文件的多处变化，可以实现分次提交</p>
+<pre><code>git add -p
+</code></pre>
+<p>删除工作区文件，并且将这次删除放入暂存区</p>
+<pre><code>git rm [file1] [file2] ...
+</code></pre>
+<p>停止追踪指定文件，但该文件会保留在工作区</p>
+<pre><code>git rm --cached [file]
+</code></pre>
+<p>改名文件，并且将这个改名放入暂存区</p>
+<pre><code>git mv [file-original] [file-renamed]
+</code></pre>
+<h4 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h4><p>提交暂存区到仓库区</p>
+<pre><code>git commit -m [message]
+</code></pre>
+<p>提交暂存区的指定文件到仓库区</p>
+<pre><code>git commit [file1] [file2] ... -m [message]
+</code></pre>
+<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+<pre><code>git commit -a
+</code></pre>
+<p>提交时显示所有diff信息</p>
+<pre><code>git commit -v
+</code></pre>
+<p>使用一次新的commit，替代上一次提交<br>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+<pre><code>git commit --amend -m [message]
+</code></pre>
+<p>重做上一次commit，并包括指定文件的新变化</p>
+<pre><code>git commit --amend [file1] [file2] ...
+</code></pre>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><p>列出所有本地分支</p>
+<pre><code>git branch
+</code></pre>
+<p>列出所有远程分支</p>
+<pre><code>git branch -r
+</code></pre>
+<p>列出所有本地分支和远程分支</p>
+<pre><code>git branch -a
+</code></pre>
+<p>新建一个分支，但依然停留在当前分支</p>
+<pre><code>git branch [branch-name]
+</code></pre>
+<p>新建一个分支，并切换到该分支</p>
+<pre><code>git checkout -b [branch]
+</code></pre>
+<p>新建一个分支，指向指定commit</p>
+<pre><code>git branch [branch] [commit]
+</code></pre>
+<p>新建一个分支，与指定的远程分支建立追踪关系</p>
+<pre><code>git branch --track [branch] [remote-branch]
+</code></pre>
+<p>切换到指定分支，并更新工作区</p>
+<pre><code>git checkout [branch-name]
+</code></pre>
+<p>切换到上一个分支</p>
+<pre><code>git checkout -
+</code></pre>
+<p>建立追踪关系，在现有分支与指定的远程分支之间</p>
+<pre><code>git branch --set-upstream [branch] [remote-branch]
+</code></pre>
+<p>合并指定分支到当前分支</p>
+<pre><code>git merge [branch]
+</code></pre>
+<p>选择一个commit，合并进当前分支</p>
+<pre><code>git cherry-pick [commit]
+</code></pre>
+<p>删除分支</p>
+<pre><code>git branch -d [branch-name]
+</code></pre>
+<p>删除远程分支</p>
+<pre><code>git push origin --delete [branch-name]
+
+git branch -dr [remote/branch]
+</code></pre>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>列出所有tag</p>
+<pre><code>git tag
+</code></pre>
+<p>新建一个tag在当前commit</p>
+<pre><code>git tag [tag]
+</code></pre>
+<p>新建一个tag在指定commit</p>
+<pre><code>git tag [tag] [commit]
+</code></pre>
+<p>删除本地tag</p>
+<pre><code>git tag -d [tag]
+</code></pre>
+<p>删除远程tag</p>
+<pre><code>git push origin :refs/tags/[tagName]
+</code></pre>
+<p>查看tag信息</p>
+<pre><code>git show [tag]
+</code></pre>
+<p>提交指定tag</p>
+<pre><code>git push [remote] [tag]
+</code></pre>
+<p>提交所有tag</p>
+<pre><code>git push [remote] --tags
+</code></pre>
+<p>新建一个分支，指向某个tag</p>
+<pre><code>git checkout -b [branch] [tag]
+</code></pre>
+<h4 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h4><p>显示有变更的文件</p>
+<pre><code>git status
+</code></pre>
+<p>显示当前分支的版本历史</p>
+<pre><code>git log
+</code></pre>
+<p>显示commit历史，以及每次commit发生变更的文件</p>
+<pre><code>git log --stat
+</code></pre>
+<p>搜索提交历史，根据关键词</p>
+<pre><code>git log -S [keyword]
+</code></pre>
+<p>显示某个commit之后的所有变动，每个commit占据一行</p>
+<pre><code>git log [tag] HEAD --pretty=format:%s
+</code></pre>
+<p>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</p>
+<pre><code>git log [tag] HEAD --grep feature
+</code></pre>
+<p>显示某个文件的版本历史，包括文件改名</p>
+<pre><code>git log --follow [file]
+
+git whatchanged [file]
+</code></pre>
+<p>显示指定文件相关的每一次diff</p>
+<pre><code>git log -p [file]
+</code></pre>
+<p>显示过去5次提交</p>
+<pre><code>git log -5 --pretty --oneline
+</code></pre>
+<p>显示所有提交过的用户，按提交次数排序</p>
+<pre><code>git shortlog -sn
+</code></pre>
+<p>显示指定文件是什么人在什么时间修改过</p>
+<pre><code>git blame [file]
+</code></pre>
+<p>显示暂存区和工作区的差异</p>
+<pre><code>git diff
+</code></pre>
+<p>显示暂存区和上一个commit的差异</p>
+<pre><code>git diff --cached [file]
+</code></pre>
+<p>显示工作区与当前分支最新commit之间的差异</p>
+<pre><code>git diff HEAD
+</code></pre>
+<p>显示两次提交之间的差异</p>
+<pre><code>git diff [first-branch]...[second-branch]
+</code></pre>
+<p>显示今天你写了多少行代码</p>
+<pre><code>git diff --shortstat &quot;@&#123;0 day ago&#125;&quot;
+</code></pre>
+<p>显示某次提交的元数据和内容变化</p>
+<pre><code>git show [commit]
+</code></pre>
+<p>显示某次提交发生变化的文件</p>
+<pre><code>git show --name-only [commit]
+</code></pre>
+<p>显示某次提交时，某个文件的内容</p>
+<pre><code>git show [commit]:[filename]
+</code></pre>
+<p>显示当前分支的最近几次提交</p>
+<pre><code>git reflog
+</code></pre>
+<h4 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h4><p>下载远程仓库的所有变动</p>
+<pre><code>git fetch [remote]
+</code></pre>
+<p>显示所有远程仓库</p>
+<pre><code>git remote -v
+</code></pre>
+<p>显示某个远程仓库的信息</p>
+<pre><code>git remote show [remote]
+</code></pre>
+<p>增加一个新的远程仓库，并命名</p>
+<pre><code>git remote add [shortname] [url]
+</code></pre>
+<p>取回远程仓库的变化，并与本地分支合并</p>
+<pre><code>git pull [remote] [branch]
+</code></pre>
+<p>上传本地指定分支到远程仓库</p>
+<pre><code>git push [remote] [branch]
+</code></pre>
+<p>强行推送当前分支到远程仓库，即使有冲突</p>
+<pre><code>git push [remote] --force
+</code></pre>
+<p>推送所有分支到远程仓库</p>
+<pre><code>git push [remote] --all
+</code></pre>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><p>恢复暂存区的指定文件到工作区</p>
+<pre><code>git checkout [file]
+</code></pre>
+<p>恢复某个commit的指定文件到暂存区和工作区</p>
+<pre><code>git checkout [commit] [file]
+</code></pre>
+<p>恢复暂存区的所有文件到工作区</p>
+<pre><code>git checkout .
+</code></pre>
+<p>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</p>
+<pre><code>git reset [file]
+</code></pre>
+<p>重置暂存区与工作区，与上一次commit保持一致</p>
+<pre><code>git reset --hard
+</code></pre>
+<p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+<pre><code>git reset [commit]
+</code></pre>
+<p>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</p>
+<pre><code>git reset --hard [commit]
+</code></pre>
+<p>重置当前HEAD为指定commit，但保持暂存区和工作区不变</p>
+<pre><code>git reset --keep [commit]
+</code></pre>
+<p>新建一个commit，用来撤销指定commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<pre><code>git revert [commit]
+</code></pre>
+<p>暂时将未提交的变化移除，稍后再移入</p>
+<pre><code>git stash
+
+git stash pop
+</code></pre>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
     </footer>
   </div>
 
@@ -310,107 +784,6 @@
 </code></pre>
 <h6 id="编译安装-默认安装在-usr-local-nginx"><a href="#编译安装-默认安装在-usr-local-nginx" class="headerlink" title="编译安装(默认安装在/usr/local/nginx)"></a>编译安装(默认安装在/usr/local/nginx)</h6><pre><code>make &amp;&amp; make install
 </code></pre>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-day1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/02/19/day1/"
-    >day1</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/02/19/day1/" class="article-date">
-  <time datetime="2021-02-19T07:47:21.797Z" itemprop="datePublished">2021-02-19</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/02/14/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/02/14/hello-world/" class="article-date">
-  <time datetime="2021-02-14T13:40:20.102Z" itemprop="datePublished">2021-02-14</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
  
       <!-- reward -->
       
@@ -570,7 +943,7 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.png">
+      <img class="reward-img" src="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     

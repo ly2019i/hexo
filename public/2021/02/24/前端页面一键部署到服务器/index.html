@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    home |  Hexo
+    前端页面一键部署到服务器 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -41,8 +41,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-前端页面一键部署到服务器"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -52,15 +52,125 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  home
+  前端页面一键部署到服务器
 </h1>
  
 
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2021-02-24T13:46:00.000Z" itemprop="datePublished">2021-02-24</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">384</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h3 id="通过ssh本地文件给上传到远程服务器"><a href="#通过ssh本地文件给上传到远程服务器" class="headerlink" title="通过ssh本地文件给上传到远程服务器"></a>通过ssh本地文件给上传到远程服务器</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install ssh2-sftp-client -D
+</code></pre>
+<h3 id="新建sftp-js文件"><a href="#新建sftp-js文件" class="headerlink" title="新建sftp.js文件"></a>新建sftp.js文件</h3><p>在文件夹根目录新建一个sftp.js文件</p>
+<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><pre><code>const Client = require(&quot;ssh2-sftp-client&quot;);
+const path = require(&quot;path&quot;);
+// const path = require(&#39;path&#39;)
+
+// 先配置一下,个人习惯
+const config = &#123;
+  path: &#123;
+    // 远程地址 从根目录开始的路径
+    romotePath: &quot;/data1/web/blog&quot;,
+
+    // 本地地址 相对于当前文件夹所在的路径
+    localPath: path.join(__dirname, &quot;./public&quot;).replace(/\\/g, &quot;/&quot;),
+  &#125;,
+  romote: &#123;
+    // 服务器 ip 地址
+    host: &quot;**************&quot;,
+    // 端口号,默认是 22
+    port: &quot;22&quot;,
+    // 登录的用户名
+    username: &quot;root&quot;,
+    // 登录密码
+    password: &quot;***************&quot;,
+  &#125;,
+&#125;;
+
+/* 主方法
+* @method main
+* @param&#123;String&#125; localPath 本地路径,不用 path 模块,直接字符串就好了,这个包自己有格式化的
+* @param&#123;String&#125; romotePath 远程路径
+* @return&#123;undefined&#125; 返回个*
+*/
+
+function main(localPath, romotePath) &#123;
+  // 实例化
+  const sftp = new Client();
+  sftp
+    .connect(config.romote)
+    //  先递归删除服务器上的文件夹
+    .then(() =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 删除服务器缓存中... -----------------------------&quot;
+      );
+      return sftp.rmdir(romotePath, true);
+    &#125;)
+    .then((data) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 删除完成 ----------------------------&quot;
+      );
+    &#125;)
+    .then(() =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 连接成功,上传中... -----------------------------&quot;
+      );
+      return sftp.uploadDir(localPath, romotePath);
+    &#125;)
+    .then((data) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 上传完成,及时清除缓存 ----------------------------&quot;
+      );
+    &#125;)
+    .catch((err) =&gt; &#123;
+      console.log(
+        &quot;----------------------------- 失败了!出事了!快看看怎么回事! -----------------------------&quot;
+      );
+      console.log(err);
+    &#125;)
+    .finally(() =&gt; &#123;
+      // 断开连接
+      sftp.end();
+    &#125;);
+&#125;
+main(config.path.localPath, config.path.romotePath);
+</code></pre>
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><p>在当前文件夹中打开终端输入</p>
+<pre><code>node ./sftp.js
+</code></pre>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -118,7 +228,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/home/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -127,6 +237,16 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+    
+      <a href="/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">爱生气的书店老板</div>
+      </a>
+    
+  </nav>
+
    
 <!-- valine评论 -->
 <div id="vcomments-box">
@@ -176,7 +296,8 @@
 </style>
 
  
-    
+   
+     
 </article>
 
 </section>
@@ -332,6 +453,23 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">

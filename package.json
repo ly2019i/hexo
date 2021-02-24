@@ -6,7 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "generate":"hexo generate && node ./sftp.js"
   },
   "hexo": {
     "version": "5.3.0"
@@ -26,5 +27,8 @@
     "hexo-theme-ayer": "^1.8.13",
     "hexo-theme-landscape": "^0.0.3",
     "nvm": "^0.0.4"
+  },
+  "devDependencies": {
+    "ssh2-sftp-client": "^6.0.1"
   }
 }
