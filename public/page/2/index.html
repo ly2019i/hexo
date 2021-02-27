@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/ly2019i/hexo"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Hexo</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '须知少时凌云志，曾许人间第一流', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  <ul class="ads">
+    
+        <li>
+            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/ezctH6FU">
+                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ten_1.jpg" width="300" alt="腾讯云限时秒杀">
+            </a>
+        </li>
+    
+        <li>
+            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/kvO7hb43">
+                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ten_2.jpg" width="300" alt="云服务器全球购低至2折">
+            </a>
+        </li>
+    
+</ul>
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-Linux下安装pcre"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/23/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/"
+    >Linux下安装pcre</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/23/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/" class="article-date">
+  <time datetime="2021-02-23T01:51:04.038Z" itemprop="datePublished">2021-02-23</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。</p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h5><h6 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;ftp.pcre.org&#x2F;pub&#x2F;pcre&#x2F;pcre-8.44.tar.gz </span><br></pre></td></tr></table></figure>
+<h6 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf pcre-8.10.tar.gz</span><br></pre></td></tr></table></figure>
+<h6 id="进入解压好的目录"><a href="#进入解压好的目录" class="headerlink" title="进入解压好的目录"></a>进入解压好的目录</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pcre-8.10.tar.gz</span><br></pre></td></tr></table></figure>
+<h6 id="执行配置"><a href="#执行配置" class="headerlink" title="执行配置"></a>执行配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure</span><br></pre></td></tr></table></figure>
+<h6 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-git常用命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+    >git常用命令</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2021-02-22T13:17:00.000Z" itemprop="datePublished">2021-02-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>在当前目录新建一个Git代码库</p>
+<pre><code>git init [project-name]
+</code></pre>
+<p>新建一个目录，将其初始化为Git代码库</p>
+<pre><code>git clone [url]
+</code></pre>
+<p>下载一个项目和它的整个代码历史</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<pre><code>git config --list
+</code></pre>
+<p>显示当前的Git配置</p>
+<pre><code>git config -e [--global]
+</code></pre>
+<p>编辑Git配置文件</p>
+<pre><code>git config [--global] user.name &quot;[name]&quot;
+git config [--global] user.email &quot;[email address]&quot;
+</code></pre>
+<p>设置提交代码时的用户信息</p>
+<h4 id="增加-删除文件"><a href="#增加-删除文件" class="headerlink" title="增加/删除文件"></a>增加/删除文件</h4><p>添加指定文件到暂存区</p>
+<pre><code>git add [file1] [file2] ...
+</code></pre>
+<p>添加指定目录到暂存区，包括子目录</p>
+<pre><code>git add [dir]
+</code></pre>
+<p>添加当前目录的所有文件到暂存区</p>
+<pre><code>git add .
+</code></pre>
+<p>添加每个变化前，都会要求确认<br>对于同一个文件的多处变化，可以实现分次提交</p>
+<pre><code>git add -p
+</code></pre>
+<p>删除工作区文件，并且将这次删除放入暂存区</p>
+<pre><code>git rm [file1] [file2] ...
+</code></pre>
+<p>停止追踪指定文件，但该文件会保留在工作区</p>
+<pre><code>git rm --cached [file]
+</code></pre>
+<p>改名文件，并且将这个改名放入暂存区</p>
+<pre><code>git mv [file-original] [file-renamed]
+</code></pre>
+<h4 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h4><p>提交暂存区到仓库区</p>
+<pre><code>git commit -m [message]
+</code></pre>
+<p>提交暂存区的指定文件到仓库区</p>
+<pre><code>git commit [file1] [file2] ... -m [message]
+</code></pre>
+<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+<pre><code>git commit -a
+</code></pre>
+<p>提交时显示所有diff信息</p>
+<pre><code>git commit -v
+</code></pre>
+<p>使用一次新的commit，替代上一次提交<br>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+<pre><code>git commit --amend -m [message]
+</code></pre>
+<p>重做上一次commit，并包括指定文件的新变化</p>
+<pre><code>git commit --amend [file1] [file2] ...
+</code></pre>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><p>列出所有本地分支</p>
+<pre><code>git branch
+</code></pre>
+<p>列出所有远程分支</p>
+<pre><code>git branch -r
+</code></pre>
+<p>列出所有本地分支和远程分支</p>
+<pre><code>git branch -a
+</code></pre>
+<p>新建一个分支，但依然停留在当前分支</p>
+<pre><code>git branch [branch-name]
+</code></pre>
+<p>新建一个分支，并切换到该分支</p>
+<pre><code>git checkout -b [branch]
+</code></pre>
+<p>新建一个分支，指向指定commit</p>
+<pre><code>git branch [branch] [commit]
+</code></pre>
+<p>新建一个分支，与指定的远程分支建立追踪关系</p>
+<pre><code>git branch --track [branch] [remote-branch]
+</code></pre>
+<p>切换到指定分支，并更新工作区</p>
+<pre><code>git checkout [branch-name]
+</code></pre>
+<p>切换到上一个分支</p>
+<pre><code>git checkout -
+</code></pre>
+<p>建立追踪关系，在现有分支与指定的远程分支之间</p>
+<pre><code>git branch --set-upstream [branch] [remote-branch]
+</code></pre>
+<p>合并指定分支到当前分支</p>
+<pre><code>git merge [branch]
+</code></pre>
+<p>选择一个commit，合并进当前分支</p>
+<pre><code>git cherry-pick [commit]
+</code></pre>
+<p>删除分支</p>
+<pre><code>git branch -d [branch-name]
+</code></pre>
+<p>删除远程分支</p>
+<pre><code>git push origin --delete [branch-name]
+
+git branch -dr [remote/branch]
+</code></pre>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>列出所有tag</p>
+<pre><code>git tag
+</code></pre>
+<p>新建一个tag在当前commit</p>
+<pre><code>git tag [tag]
+</code></pre>
+<p>新建一个tag在指定commit</p>
+<pre><code>git tag [tag] [commit]
+</code></pre>
+<p>删除本地tag</p>
+<pre><code>git tag -d [tag]
+</code></pre>
+<p>删除远程tag</p>
+<pre><code>git push origin :refs/tags/[tagName]
+</code></pre>
+<p>查看tag信息</p>
+<pre><code>git show [tag]
+</code></pre>
+<p>提交指定tag</p>
+<pre><code>git push [remote] [tag]
+</code></pre>
+<p>提交所有tag</p>
+<pre><code>git push [remote] --tags
+</code></pre>
+<p>新建一个分支，指向某个tag</p>
+<pre><code>git checkout -b [branch] [tag]
+</code></pre>
+<h4 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h4><p>显示有变更的文件</p>
+<pre><code>git status
+</code></pre>
+<p>显示当前分支的版本历史</p>
+<pre><code>git log
+</code></pre>
+<p>显示commit历史，以及每次commit发生变更的文件</p>
+<pre><code>git log --stat
+</code></pre>
+<p>搜索提交历史，根据关键词</p>
+<pre><code>git log -S [keyword]
+</code></pre>
+<p>显示某个commit之后的所有变动，每个commit占据一行</p>
+<pre><code>git log [tag] HEAD --pretty=format:%s
+</code></pre>
+<p>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</p>
+<pre><code>git log [tag] HEAD --grep feature
+</code></pre>
+<p>显示某个文件的版本历史，包括文件改名</p>
+<pre><code>git log --follow [file]
+
+git whatchanged [file]
+</code></pre>
+<p>显示指定文件相关的每一次diff</p>
+<pre><code>git log -p [file]
+</code></pre>
+<p>显示过去5次提交</p>
+<pre><code>git log -5 --pretty --oneline
+</code></pre>
+<p>显示所有提交过的用户，按提交次数排序</p>
+<pre><code>git shortlog -sn
+</code></pre>
+<p>显示指定文件是什么人在什么时间修改过</p>
+<pre><code>git blame [file]
+</code></pre>
+<p>显示暂存区和工作区的差异</p>
+<pre><code>git diff
+</code></pre>
+<p>显示暂存区和上一个commit的差异</p>
+<pre><code>git diff --cached [file]
+</code></pre>
+<p>显示工作区与当前分支最新commit之间的差异</p>
+<pre><code>git diff HEAD
+</code></pre>
+<p>显示两次提交之间的差异</p>
+<pre><code>git diff [first-branch]...[second-branch]
+</code></pre>
+<p>显示今天你写了多少行代码</p>
+<pre><code>git diff --shortstat &quot;@&#123;0 day ago&#125;&quot;
+</code></pre>
+<p>显示某次提交的元数据和内容变化</p>
+<pre><code>git show [commit]
+</code></pre>
+<p>显示某次提交发生变化的文件</p>
+<pre><code>git show --name-only [commit]
+</code></pre>
+<p>显示某次提交时，某个文件的内容</p>
+<pre><code>git show [commit]:[filename]
+</code></pre>
+<p>显示当前分支的最近几次提交</p>
+<pre><code>git reflog
+</code></pre>
+<h4 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h4><p>下载远程仓库的所有变动</p>
+<pre><code>git fetch [remote]
+</code></pre>
+<p>显示所有远程仓库</p>
+<pre><code>git remote -v
+</code></pre>
+<p>显示某个远程仓库的信息</p>
+<pre><code>git remote show [remote]
+</code></pre>
+<p>增加一个新的远程仓库，并命名</p>
+<pre><code>git remote add [shortname] [url]
+</code></pre>
+<p>取回远程仓库的变化，并与本地分支合并</p>
+<pre><code>git pull [remote] [branch]
+</code></pre>
+<p>上传本地指定分支到远程仓库</p>
+<pre><code>git push [remote] [branch]
+</code></pre>
+<p>强行推送当前分支到远程仓库，即使有冲突</p>
+<pre><code>git push [remote] --force
+</code></pre>
+<p>推送所有分支到远程仓库</p>
+<pre><code>git push [remote] --all
+</code></pre>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><p>恢复暂存区的指定文件到工作区</p>
+<pre><code>git checkout [file]
+</code></pre>
+<p>恢复某个commit的指定文件到暂存区和工作区</p>
+<pre><code>git checkout [commit] [file]
+</code></pre>
+<p>恢复暂存区的所有文件到工作区</p>
+<pre><code>git checkout .
+</code></pre>
+<p>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</p>
+<pre><code>git reset [file]
+</code></pre>
+<p>重置暂存区与工作区，与上一次commit保持一致</p>
+<pre><code>git reset --hard
+</code></pre>
+<p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+<pre><code>git reset [commit]
+</code></pre>
+<p>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</p>
+<pre><code>git reset --hard [commit]
+</code></pre>
+<p>重置当前HEAD为指定commit，但保持暂存区和工作区不变</p>
+<pre><code>git reset --keep [commit]
+</code></pre>
+<p>新建一个commit，用来撤销指定commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<pre><code>git revert [commit]
+</code></pre>
+<p>暂时将未提交的变化移除，稍后再移入</p>
+<pre><code>git stash
+
+git stash pop
+</code></pre>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

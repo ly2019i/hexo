@@ -5,7 +5,11 @@ categories: "git"
 tags: ["git"]
 ---
 #### 新建代码库
+
+```
     git init
+```
+
 在当前目录新建一个Git代码库
 
     git init [project-name]

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-24T14:03:36.134Z</updated>
+  <updated>2021-02-27T13:54:48.925Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,207 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>浅拷贝和深拷贝</title>
+    <link href="http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    <id>http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/</id>
+    <published>2021-02-27T13:29:00.000Z</published>
+    <updated>2021-02-27T13:54:48.925Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;浅拷贝和深拷贝&quot;&gt;&lt;a href=&quot;#浅拷贝和深拷贝&quot; class=&quot;headerlink&quot; title=&quot;浅拷贝和深拷贝&quot;&gt;&lt;/a&gt;浅拷贝和深拷贝&lt;/h2&gt;&lt;h3 id=&quot;浅拷贝&quot;&gt;&lt;a href=&quot;#浅拷贝&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="js" scheme="http://example.com/categories/js/"/>
+    
+    
+    <category term="js" scheme="http://example.com/tags/js/"/>
+    
+    <category term="浅拷贝" scheme="http://example.com/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    
+    <category term="深拷贝" scheme="http://example.com/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字符串和数组常用方法</title>
+    <link href="http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</id>
+    <published>2021-02-27T13:17:00.000Z</published>
+    <updated>2021-02-27T13:14:26.584Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h1&gt;&lt;h2 id=&quot;字符串的创建：&quot;&gt;&lt;a href=&quot;#字符串的创建：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="js" scheme="http://example.com/categories/js/"/>
+    
+    
+    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="js" scheme="http://example.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原型和原型链</title>
+    <link href="http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>http://example.com/2021/02/27/js%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
+    <published>2021-02-27T13:17:00.000Z</published>
+    <updated>2021-02-27T13:26:46.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;js中有一个话，叫万物皆对象，因为js是基于原型的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;原型&quot;&gt;&lt;a href=&quot;#原型&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="js" scheme="http://example.com/categories/js/"/>
+    
+    
+    <category term="js" scheme="http://example.com/tags/js/"/>
+    
+    <category term="原型" scheme="http://example.com/tags/%E5%8E%9F%E5%9E%8B/"/>
+    
+    <category term="原型链" scheme="http://example.com/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>至少有 K 个重复字符的最长子串</title>
+    <link href="http://example.com/2021/02/27/leetCode/%E8%87%B3%E5%B0%91%E6%9C%89%20K%20%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/"/>
+    <id>http://example.com/2021/02/27/leetCode/%E8%87%B3%E5%B0%91%E6%9C%89%20K%20%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/</id>
+    <published>2021-02-27T12:36:00.000Z</published>
+    <updated>2021-02-27T12:44:21.814Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;至少有-K-个重复字符的最长子串&quot;&gt;&lt;a href=&quot;#至少有-K-个重复字符的最长子串&quot; class=&quot;headerlink&quot; title=&quot;至少有 K 个重复字符的最长子串&quot;&gt;&lt;/a&gt;至少有 K 个重复字符的最长子串&lt;/h3&gt;&lt;p&gt;给你一个字符串 s</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    
+    
+    <category term="中等" scheme="http://example.com/tags/%E4%B8%AD%E7%AD%89/"/>
+    
+    <category term="leetcode" scheme="http://example.com/tags/leetcode/"/>
+    
+    <category term="每日打卡" scheme="http://example.com/tags/%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/"/>
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器的兼容性</title>
+    <link href="http://example.com/2021/02/26/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    <id>http://example.com/2021/02/26/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
+    <published>2021-02-26T12:33:00.000Z</published>
+    <updated>2021-02-26T12:33:51.548Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;什么是浏览器的兼容性&quot;&gt;&lt;a href=&quot;#什么是浏览器的兼容性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="面试必看" scheme="http://example.com/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E7%9C%8B/"/>
+    
+    
+    <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>get和post的区别</title>
+    <link href="http://example.com/2021/02/26/Get%E5%92%8CPost%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://example.com/2021/02/26/Get%E5%92%8CPost%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2021-02-26T12:17:00.000Z</published>
+    <updated>2021-02-26T12:33:38.306Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;GET和POST的区别&quot;&gt;&lt;a href=&quot;#GET和POST的区别&quot; class=&quot;headerlink&quot; title=&quot;GET和POST的区别&quot;&gt;&lt;/a&gt;GET和POST的区别&lt;/h1&gt;&lt;h2 id=&quot;HTTP请求方法&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="面试必看" scheme="http://example.com/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E7%9C%8B/"/>
+    
+    
+    <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js基础类型</title>
+    <link href="http://example.com/2021/02/25/js%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://example.com/2021/02/25/js%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/</id>
+    <published>2021-02-25T13:22:00.000Z</published>
+    <updated>2021-02-27T14:12:38.867Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;ES5&quot;&gt;&lt;a href=&quot;#ES5&quot; class=&quot;headerlink&quot; title=&quot;ES5&quot;&gt;&lt;/a&gt;ES5&lt;/h2&gt;&lt;p&gt;Es5规定的基础类型为6种：number,string,undefined,null,boolean,object&lt;br&gt;其中</summary>
+        
+      
+    
+    
+    
+    <category term="js" scheme="http://example.com/categories/js/"/>
+    
+    
+    <category term="js基础" scheme="http://example.com/tags/js%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>前端页面一键部署到服务器</title>
     <link href="http://example.com/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://example.com/2021/02/24/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
     <published>2021-02-24T13:46:00.000Z</published>
-    <updated>2021-02-24T14:03:36.134Z</updated>
+    <updated>2021-02-27T13:42:41.141Z</updated>
     
     
       
@@ -39,10 +235,10 @@
   
   <entry>
     <title>爱生气的书店老板</title>
-    <link href="http://example.com/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/"/>
-    <id>http://example.com/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/</id>
+    <link href="http://example.com/2021/02/23/leetCode/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/"/>
+    <id>http://example.com/2021/02/23/leetCode/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/</id>
     <published>2021-02-23T13:17:00.000Z</published>
-    <updated>2021-02-23T13:44:13.011Z</updated>
+    <updated>2021-02-27T13:39:25.154Z</updated>
     
     
       
@@ -69,36 +265,32 @@
   </entry>
   
   <entry>
-    <title>git常用命令</title>
-    <link href="http://example.com/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-02-22T13:17:00.000Z</published>
-    <updated>2021-02-24T12:19:52.036Z</updated>
+    <title>Linux下安装和配置nginx</title>
+    <link href="http://example.com/2021/02/23/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/"/>
+    <id>http://example.com/2021/02/23/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/</id>
+    <published>2021-02-23T01:51:04.039Z</published>
+    <updated>2021-02-27T13:41:01.905Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h4 id=&quot;新建代码库&quot;&gt;&lt;a href=&quot;#新建代码库&quot; class=&quot;headerlink&quot; title=&quot;新建代码库&quot;&gt;&lt;/a&gt;新建代码库&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;git</summary>
+    <summary type="html">&lt;h2 id=&quot;Nginx简介&quot;&gt;&lt;a href=&quot;#Nginx简介&quot; class=&quot;headerlink&quot; title=&quot;Nginx简介&quot;&gt;&lt;/a&gt;Nginx简介&lt;/h2&gt;&lt;h4 id=&quot;Nginx是什么？&quot;&gt;&lt;a href=&quot;#Nginx是什么？&quot;</summary>
         
       
     
     
     
-    <category term="git" scheme="http://example.com/categories/git/"/>
-    
-    
-    <category term="git" scheme="http://example.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Linux下安装pcre</title>
-    <link href="http://example.com/2021/02/19/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/"/>
-    <id>http://example.com/2021/02/19/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/</id>
-    <published>2021-02-19T11:06:01.852Z</published>
-    <updated>2021-02-19T12:46:16.606Z</updated>
+    <link href="http://example.com/2021/02/23/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/"/>
+    <id>http://example.com/2021/02/23/Linux%E4%B8%8B%E5%AE%89%E8%A3%85pcre/</id>
+    <published>2021-02-23T01:51:04.038Z</published>
+    <updated>2021-02-27T13:41:27.402Z</updated>
     
     
       
@@ -116,23 +308,27 @@
   </entry>
   
   <entry>
-    <title>Linux下安装和配置nginx</title>
-    <link href="http://example.com/2021/02/19/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/"/>
-    <id>http://example.com/2021/02/19/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnginx/</id>
-    <published>2021-02-19T10:49:38.290Z</published>
-    <updated>2021-02-19T14:34:19.670Z</updated>
+    <title>git常用命令</title>
+    <link href="http://example.com/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2021/02/22/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-02-22T13:17:00.000Z</published>
+    <updated>2021-02-27T13:40:23.720Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Nginx简介&quot;&gt;&lt;a href=&quot;#Nginx简介&quot; class=&quot;headerlink&quot; title=&quot;Nginx简介&quot;&gt;&lt;/a&gt;Nginx简介&lt;/h2&gt;&lt;h4 id=&quot;Nginx是什么？&quot;&gt;&lt;a href=&quot;#Nginx是什么？&quot;</summary>
+    <summary type="html">&lt;h4 id=&quot;新建代码库&quot;&gt;&lt;a href=&quot;#新建代码库&quot; class=&quot;headerlink&quot; title=&quot;新建代码库&quot;&gt;&lt;/a&gt;新建代码库&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     
     
     
+    <category term="git" scheme="http://example.com/categories/git/"/>
+    
+    
+    <category term="git" scheme="http://example.com/tags/git/"/>
     
   </entry>
   

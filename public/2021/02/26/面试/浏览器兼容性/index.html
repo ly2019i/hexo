@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    浏览器的兼容性 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-面试/浏览器兼容性"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  浏览器的兼容性
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/26/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/" class="article-date">
+  <time datetime="2021-02-26T12:33:00.000Z" itemprop="datePublished">2021-02-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E7%9C%8B/">面试必看</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是浏览器的兼容性"><a href="#什么是浏览器的兼容性" class="headerlink" title="什么是浏览器的兼容性"></a>什么是浏览器的兼容性</h1><p>浏览器兼容性问题又被称为网页兼容性或网站兼容性问题，指网页在各种浏览器上的显示效果可能不一致而产生浏览器和网页间的兼容问题。所以在网站的设计和制作中，做好浏览器兼容，才能够让网站在不同的浏览器下都正常显示。</p>
+<blockquote>
+<p>浏览器的兼容性无非还是样式兼容性（css），交互兼容性（javascript），浏览器 hack 三个方面</p>
+</blockquote>
+<h2 id="样式兼容性-css"><a href="#样式兼容性-css" class="headerlink" title="样式兼容性(css)"></a>样式兼容性(css)</h2><p><img src="https://user-gold-cdn.xitu.io/2018/7/5/16468bfe8343415c?imageslim" alt="image"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/necolas/normalize.css">normalize.css</a></p>
+<p>1.图片间隙</p>
+<pre><code>div中的图片间隙
+bug：在块元素中插入图片时，有时图片会将块元素下方撑大三像素。
+Hack：给&lt;img&gt;添加声明：display:block
+</code></pre>
+<p>2.表单元素行高不一致(IE,MOZ,C,O,S)</p>
+<pre><code>bug：表单元素行高对齐方式不一致
+hack：给表单元素添加声明：float:left;
+</code></pre>
+<p>3.按钮元素默认大小及样式不一致</p>
+<pre><code>hack1： 统一大小及样式（用a标记模拟）
+hack2：如果这个按钮是一个图片，直接把图片作为按钮的背景图即可。
+</code></pre>
+<p>4.鼠标指针bug</p>
+<pre><code>描述：cursor属性的hand属性值只有IE8浏览器识别;
+hack：如统一某元素鼠标指针形状为手型，应添加声明：cursor:pointer;
+</code></pre>
+<p>5.透明属性</p>
+<pre><code>IE浏览器写法：filter:alpha(opacity=数值);取值范围 1-100(IE8以下)
+兼容其他浏览器写法：opacity:数值;(数值的取值范围0-1,0.1,0.2,0.3-----0.9)
+</code></pre>
+<p>6.父元素里有块元素，如果给子元素添加添加margin-top,父元素会“掉”下来（高度塌陷）</p>
+<pre><code>hack1：给父元素添加overflow：hidden；
+hack2：给子元素添加float；
+hack3：给父元素加边框；
+或者用其他的方法达到我们想要的效果：如给父元素加padding-top
+</code></pre>
+<p>7.双倍浮向（双倍边距）</p>
+<pre><code>描述：当Ie6及更低版本浏览器在解析浮动元素时，会错误地把浮向边的边界加倍显示。
+hack:给浮动元素添加声明：display:inline;
+</code></pre>
+<p>8.当li里的A加display:block或float:left时，出现行高不一致，有的会多出3像素</p>
+<pre><code>hack1：给a加display：inline-block;
+hack2：给a加display：inline;
+hack3：给li加float，再加宽度
+</code></pre>
+<p>9.万能清除浮动法</p>
+<pre><code>父元素选择符:after&#123;content:&quot;.&quot;; clear:both; display:block; height:0; overflow:hidden; visibility:hidden;&#125;
+</code></pre>
+<p>10.行内块元素之间空白缝隙的问题</p>
+<pre><code>hack1：利用margin 负值，例如Margin-left:-8px;
+hack2：把行内块写到一行上去
+hack3：给父盒子加:font-size:0;
+</code></pre>
+<h2 id="交互兼容性"><a href="#交互兼容性" class="headerlink" title="交互兼容性"></a>交互兼容性</h2><p><img src="https://pic2.zhimg.com/v2-dc2e8fa38c0096dac0aeec90b600ac81_b.jpg" alt="image"></p>
+<p>1、event事件</p>
+<pre><code>通用方式
+document.onclick=function(e)&#123;
+    var e = e || window.event;   //兼容写法
+&#125;
+</code></pre>
+<p>2、一些“方法”的兼容性写法</p>
+<pre><code>停止事件传播
+if(evt.stopPropagation)&#123;
+    return evt.stopPropagation();    //一定不能漏下evt  方法前一定要写明对象
+&#125;else&#123;
+    return evt.cancelbuble();
+&#125;
+
+阻止默认事件
+if (e.preventDefault) &#123;
+     e.preventDefault();   //W3C标准
+&#125;else&#123;
+     e.returnValue = &#39;false&#39;;    //IE
+&#125;
+
+获取第一个子节点（next，last都类似）
+if (obj.lastElementChild) &#123;
+     return obj.firstElementChild;   //非IE6/7/8支持
+&#125; else&#123;
+     return obj.firstChild;   //IE6/7/8支持
+&#125;;
+
+设置监听事件
+//参数一：对象
+//参数二：事件类型
+//参数三：事件处理函数
+function addEvent(obj, type, fn)&#123;
+     if (obj.addEventListener) &#123;
+          obj.addEventListener(type, fn, false);  //非IE
+     &#125; else&#123;
+          obj.attachEvent(&#39;on&#39; + type, fn);  //IE
+     &#125;
+&#125;
+</code></pre>
+<p>3、通过className获取DOM节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getClassName</span>(<span class="params">xxx</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> atag = <span class="built_in">document</span>.all ? <span class="built_in">document</span>.all : <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">     <span class="keyword">var</span> arr = [];</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; atag.length; i++) &#123;</span><br><span class="line">         <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&#x27;\\b&#x27;</span> + xxx + <span class="string">&#x27;\\b&#x27;</span>, <span class="string">&#x27;g&#x27;</span>);</span><br><span class="line">         <span class="keyword">if</span> (reg.test(atag[i].className)) &#123;</span><br><span class="line">             arr.push(atag[i]);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> arr;  <span class="comment">//返回的也是数组，包含传入的class所有元素；</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、event.srcElement问题</p>
+<pre><code>IE：event对象有srcElement属性，没有target属性；
+Firefox:even对象有target属性，没有srcElement属性。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srcObj = event.srcElement ? event.srcElement : event.target;</span><br></pre></td></tr></table></figure>
+<p>5、firefox与IE的父元素(parentElement)的区别</p>
+<pre><code>IE：obj.parentElement
+firefox：obj.parentNode
+hack：都使用obj.parentNode
+</code></pre>
+<h2 id="移动端常见案例"><a href="#移动端常见案例" class="headerlink" title="移动端常见案例"></a>移动端常见案例</h2><p>1、部分情况下对非可点击元素如(label,span)监听click事件时，ios下不会触发</p>
+<pre><code>hack：css中增加cursor:pointer
+</code></pre>
+<p>2、底部输入框被键盘遮挡问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oheight = $(<span class="built_in">document</span>).height(); <span class="comment">//浏览器当前的高度</span></span><br><span class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>($(<span class="built_in">document</span>).height() &lt; oheight)&#123;</span><br><span class="line">          $(<span class="string">&quot;#footer&quot;</span>).css(<span class="string">&quot;position&quot;</span>, <span class="string">&quot;static&quot;</span>);</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          $(<span class="string">&quot;#footer&quot;</span>).css(<span class="string">&quot;position&quot;</span>, <span class="string">&quot;absolute&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>3、CSS动画页面闪白,动画卡顿</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用综合属性</span></span><br><span class="line">-webkit-transform: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">-moz-transform: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">-ms-transform: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">transform: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>4、阻止旋转屏幕时自动调整字体大小</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 &#123;-webkit-text-size-adjust:none;&#125;</span><br></pre></td></tr></table></figure>
+<p>5、预加载、自动播放无效</p>
+<p>自动播放的有效性受操作系统、浏览器（webview）、版本等的影响，苹果官方规定必须由用户手动触发才会载入音频，所以可以在用户依次输入后，让音频实现预加载:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;touchstart&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;audio&#x27;</span>)[<span class="number">0</span>].play();</span><br><span class="line">     <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;audio&#x27;</span>)[<span class="number">0</span>].pause();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>6、ios safari时间显示问题</p>
+<pre><code>设置new Date日期格式的时候，在ios中的safari中发现显示效果与其他浏览器不一致。
+只识别：new Date(&quot;year/month/day&quot;);
+</code></pre>
+<p>7、移动端300ms延迟。</p>
+<pre><code>hack1：一般在移动端用tap事件来取代click事件
+hack2：fastclick可以解决在手机上点击事件的300ms延迟
+</code></pre>
+<p>8、手机上的flex布局时会有兼容性问题</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;  //老版本语法: Safari, iOS, Android browser, older WebKit browsers. </span><br><span class="line">    display: -moz-box;     //老版本语法: Firefox (buggy) </span><br><span class="line">    display: -ms-flexbox;  //混合版本语法: IE <span class="number">10</span> </span><br><span class="line">    display: -webkit-flex; //新版本语法: Chrome <span class="number">21</span>+ </span><br><span class="line">    display: flex;         //新版本语法: Opera <span class="number">12.1</span>, Firefox <span class="number">22</span>+</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="浏览器hack"><a href="#浏览器hack" class="headerlink" title="浏览器hack"></a>浏览器hack</h2><p><img src="https://pic1.zhimg.com/v2-46cac38591afd23945a60713cf0bc49c_b.jpg" alt="image"></p>
+<p>1、Firefox</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@-moz-document</span> url-prefix() &#123; <span class="selector-class">.selector</span> &#123; property: value; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>上面是仅仅被Firefox浏览器识别的写法，具体如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@-moz-document</span> url-prefix() &#123; <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>:lime; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>支持Firefox的还有几种写法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 支持所有firefox版本 */</span> <span class="selector-id">#selector</span><span class="selector-attr">[id=selector]</span> &#123; property: value; &#125; </span><br><span class="line">或者： <span class="keyword">@-moz-document</span> url-prefix() &#123; <span class="selector-class">.selector</span> &#123; property: value; &#125;  </span><br><span class="line"><span class="comment">/* 支持所有Gecko内核的浏览器 (包括Firefox) */</span> *&gt;<span class="selector-class">.selector</span> &#123; property: value; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、Webkit枘核浏览器(chrome and safari)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; Selector &#123; property: value; &#125; &#125;</span><br><span class="line"><span class="comment">/*上面写法主要是针对Webkit内核的浏览器，如Google Chrome 和 Safari浏览器：*/</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>: <span class="number">#f36</span>; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>3、Opera浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span><span class="selector-pseudo">:first</span>-child&gt;<span class="selector-tag">body</span> Selector &#123;property:value;&#125;</span><br><span class="line"><span class="comment">/*或者：*/</span> <span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">0</span>) &#123; Selector &#123;property: value;&#125; &#125; </span><br><span class="line"><span class="comment">/*或者：*/</span> <span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">10000</span>), <span class="keyword">not</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; head~<span class="selector-tag">body</span> Selector &#123; property: value; &#125; &#125;</span><br><span class="line"><span class="comment">/*上面则是Opera浏览器的Hack写法：*/</span></span><br><span class="line"><span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">10000</span>), <span class="keyword">not</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; head~<span class="selector-tag">body</span> <span class="selector-class">.demo</span> &#123; <span class="attribute">background</span>: green; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>4、IE9浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> Selector &#123;property: value9;&#125;</span><br><span class="line"><span class="comment">/*上面是IE9的写法，具体应用如下：*/</span></span><br><span class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: <span class="number">#ff0</span>9;&#125;</span><br></pre></td></tr></table></figure>
+<p>5、IE9以及IE9以下版本</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Selector &#123;property:value9;&#125;</span><br><span class="line"><span class="comment">/*这种写法只有IE9以及IE9以下版本能识别，这里需要注意此处“9”只能是“9”不能是别的，比如说“8”，不然会失去效果的，如：*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.demo</span> &#123;<span class="attribute">background</span>: lime9;&#125;</span><br></pre></td></tr></table></figure>
+<p>6、IE7浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*+<span class="selector-tag">html</span> Selector&#123;property:value;&#125; 或 *<span class="selector-pseudo">:first</span>-child+<span class="selector-tag">html</span> Selector &#123;property:value;&#125;</span><br><span class="line"><span class="comment">/*上面两种是IE7浏览器下才能识别，如：*/</span></span><br><span class="line">*+<span class="selector-tag">html</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">background</span>: green;&#125; 或者： *<span class="selector-pseudo">:first</span>-child+<span class="selector-tag">html</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">background</span>: green;&#125;</span><br></pre></td></tr></table></figure>
+<p>7、IE7及IE7以下版本浏览器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Selector &#123;*property: value;&#125;</span><br><span class="line">&#x2F;*上面的写法在IE7以及其以下版本都可以识别，如：*&#x2F;</span><br></pre></td></tr></table></figure>
+<p>.demo {*background: red;}<br>8、IE6浏览器</p>
+<pre><code>加_下划线即可
+</code></pre>
+<h3 id="CSS选择器的Hack写法"><a href="#CSS选择器的Hack写法" class="headerlink" title="CSS选择器的Hack写法"></a>CSS选择器的Hack写法</h3><p>下面我们主要来看CSS选择器和CSS属性选择器在不同浏览器的支持情况。下面先来看CSS选择器支持情况。</p>
+<p>1、IE6以及IE6以下版本浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* <span class="selector-tag">html</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br><span class="line">* ```</span><br><span class="line"><span class="number">2</span>、仅仅IE7浏览器</span><br><span class="line">```css</span><br><span class="line">*<span class="selector-pseudo">:first</span>-child+<span class="selector-tag">html</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
+<p>3、除IE6之外的所有浏览器（IE7-9, Firefox,Safari,Opera）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&gt;<span class="selector-tag">body</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
+<p>4、IE8-9,Firefox,Safari,Opear</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&gt;<span class="comment">/**/</span><span class="selector-tag">body</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
+<p>5、IE9+</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br></pre></td></tr></table></figure>
+<p>6、Firefox浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@-moz-document</span> url-prefix() &#123; <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>7、Webkit内核浏览器（Safari和Google Chrome）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>8、Opera浏览器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">10000</span>), <span class="keyword">not</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; head~<span class="selector-tag">body</span> <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>: red; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>9、iPhone / mobile webkit</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-device-width</span>: <span class="number">480px</span>) &#123; <span class="selector-class">.demo</span> &#123; <span class="attribute">color</span>: red &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>CSS属性Hack写法</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1、IE6浏览器*/</span></span><br><span class="line"><span class="selector-class">.demo</span> &#123;_color: red;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*2、IE6-7浏览器识别*/</span></span><br><span class="line"><span class="selector-class">.demo</span> &#123;*<span class="attribute">color</span>: red;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*3、所有浏览器除IE6浏览外*/</span></span><br><span class="line"><span class="selector-class">.demo</span> &#123;<span class="attribute">color</span><span class="comment">/**/</span>:red;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*4、IE6-9浏览器*/</span></span><br><span class="line"><span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: red9;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*5、IE7-8浏览器*/</span></span><br><span class="line"><span class="selector-class">.demo</span> &#123;<span class="attribute">color</span><span class="comment">/***/</span>:red9;&#125;</span><br></pre></td></tr></table></figure>
+<p>IE条件注释，全部采用选择器Hack的写法。这种写法分两步：</p>
+<p>1、创建条件样式表，并在HTML中body里添加相应的class类名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!–[if IE6]–&gt;&lt;&lt;!–[if IE7]–&gt;&lt;!–[if IE8]–&gt;&lt;!–[if IE9]–&gt;&lt;!–[if !IE]–&gt;</span><br></pre></td></tr></table></figure>
+<p>2、接着创建对应的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: blue;&#125;<span class="comment">/*现代浏览器*/</span> </span><br><span class="line"><span class="selector-class">.non-ie</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: red;&#125;<span class="comment">/*除IE外浏览器*/</span> </span><br><span class="line"><span class="selector-class">.ie9</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: yellow;&#125;<span class="comment">/*IE9浏览器*/</span> </span><br><span class="line"><span class="selector-class">.ie8</span> <span class="selector-class">.demo</span>&#123;<span class="attribute">color</span>: green;&#125;<span class="comment">/*IE8浏览器*/</span> </span><br><span class="line"><span class="selector-class">.ie7</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: orange;&#125;<span class="comment">/*IE7浏览器*/</span></span><br><span class="line"><span class="selector-class">.ie6</span> <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>: lime;&#125;<span class="comment">/*IE6浏览器*/</span> </span><br><span class="line"><span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">0px</span>)&#123; <span class="selector-class">.demo</span> &#123;<span class="attribute">color</span>:black;&#125; <span class="comment">/* webkit and opera */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>)&#123; <span class="selector-class">.demo</span>&#123;<span class="attribute">color</span>:<span class="number">#369</span>;&#125;<span class="comment">/* webkit */</span> </span><br><span class="line"><span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">10000</span>), <span class="keyword">not</span> all <span class="keyword">and</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>:<span class="number">0</span>) &#123; head~<span class="selector-tag">body</span> <span class="selector-class">.demo</span>&#123;<span class="attribute">color</span>:<span class="number">#cf6</span>;&#125;<span class="comment">/* opera */</span> </span><br><span class="line"><span class="keyword">@-moz-document</span> url-prefix()&#123; <span class="selector-class">.demo</span>&#123;<span class="attribute">color</span>:<span class="number">#963</span>;&#125;<span class="comment">/* firefox * / </span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/02/26/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/02/27/leetCode/%E8%87%B3%E5%B0%91%E6%9C%89%20K%20%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            至少有 K 个重复字符的最长子串
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/02/26/Get%E5%92%8CPost%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">get和post的区别</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

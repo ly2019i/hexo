@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">384</span>
+            <span class="post-count">476</span>
         </span>
     </span>
 
@@ -76,7 +76,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -91,85 +91,14 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="通过ssh本地文件给上传到远程服务器"><a href="#通过ssh本地文件给上传到远程服务器" class="headerlink" title="通过ssh本地文件给上传到远程服务器"></a>通过ssh本地文件给上传到远程服务器</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install ssh2-sftp-client -D
-</code></pre>
+  <h3 id="通过ssh本地文件给上传到远程服务器"><a href="#通过ssh本地文件给上传到远程服务器" class="headerlink" title="通过ssh本地文件给上传到远程服务器"></a>通过ssh本地文件给上传到远程服务器</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ssh2-sftp-client -D</span><br></pre></td></tr></table></figure>
 <h3 id="新建sftp-js文件"><a href="#新建sftp-js文件" class="headerlink" title="新建sftp.js文件"></a>新建sftp.js文件</h3><p>在文件夹根目录新建一个sftp.js文件</p>
-<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><pre><code>const Client = require(&quot;ssh2-sftp-client&quot;);
-const path = require(&quot;path&quot;);
-// const path = require(&#39;path&#39;)
-
-// 先配置一下,个人习惯
-const config = &#123;
-  path: &#123;
-    // 远程地址 从根目录开始的路径
-    romotePath: &quot;/data1/web/blog&quot;,
-
-    // 本地地址 相对于当前文件夹所在的路径
-    localPath: path.join(__dirname, &quot;./public&quot;).replace(/\\/g, &quot;/&quot;),
-  &#125;,
-  romote: &#123;
-    // 服务器 ip 地址
-    host: &quot;**************&quot;,
-    // 端口号,默认是 22
-    port: &quot;22&quot;,
-    // 登录的用户名
-    username: &quot;root&quot;,
-    // 登录密码
-    password: &quot;***************&quot;,
-  &#125;,
-&#125;;
-
-/* 主方法
-* @method main
-* @param&#123;String&#125; localPath 本地路径,不用 path 模块,直接字符串就好了,这个包自己有格式化的
-* @param&#123;String&#125; romotePath 远程路径
-* @return&#123;undefined&#125; 返回个*
-*/
-
-function main(localPath, romotePath) &#123;
-  // 实例化
-  const sftp = new Client();
-  sftp
-    .connect(config.romote)
-    //  先递归删除服务器上的文件夹
-    .then(() =&gt; &#123;
-      console.log(
-        &quot;----------------------------- 删除服务器缓存中... -----------------------------&quot;
-      );
-      return sftp.rmdir(romotePath, true);
-    &#125;)
-    .then((data) =&gt; &#123;
-      console.log(
-        &quot;----------------------------- 删除完成 ----------------------------&quot;
-      );
-    &#125;)
-    .then(() =&gt; &#123;
-      console.log(
-        &quot;----------------------------- 连接成功,上传中... -----------------------------&quot;
-      );
-      return sftp.uploadDir(localPath, romotePath);
-    &#125;)
-    .then((data) =&gt; &#123;
-      console.log(
-        &quot;----------------------------- 上传完成,及时清除缓存 ----------------------------&quot;
-      );
-    &#125;)
-    .catch((err) =&gt; &#123;
-      console.log(
-        &quot;----------------------------- 失败了!出事了!快看看怎么回事! -----------------------------&quot;
-      );
-      console.log(err);
-    &#125;)
-    .finally(() =&gt; &#123;
-      // 断开连接
-      sftp.end();
-    &#125;);
-&#125;
-main(config.path.localPath, config.path.romotePath);
-</code></pre>
+<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">const Client &#x3D; require(&quot;ssh2-sftp-client&quot;);</span><br><span class="line">const path &#x3D; require(&quot;path&quot;);</span><br><span class="line">&#x2F;&#x2F; const path &#x3D; require(&#39;path&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 先配置一下,个人习惯</span><br><span class="line">const config &#x3D; &#123;</span><br><span class="line">  path: &#123;</span><br><span class="line">    &#x2F;&#x2F; 远程地址 从根目录开始的路径</span><br><span class="line">    romotePath: &quot;&#x2F;data1&#x2F;web&#x2F;blog&quot;,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 本地地址 相对于当前文件夹所在的路径</span><br><span class="line">    localPath: path.join(__dirname, &quot;.&#x2F;public&quot;).replace(&#x2F;\\&#x2F;g, &quot;&#x2F;&quot;),</span><br><span class="line">  &#125;,</span><br><span class="line">  romote: &#123;</span><br><span class="line">    &#x2F;&#x2F; 服务器 ip 地址</span><br><span class="line">    host: &quot;**************&quot;,</span><br><span class="line">    &#x2F;&#x2F; 端口号,默认是 22</span><br><span class="line">    port: &quot;22&quot;,</span><br><span class="line">    &#x2F;&#x2F; 登录的用户名</span><br><span class="line">    username: &quot;root&quot;,</span><br><span class="line">    &#x2F;&#x2F; 登录密码</span><br><span class="line">    password: &quot;***************&quot;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;* 主方法</span><br><span class="line">* @method main</span><br><span class="line">* @param&#123;String&#125; localPath 本地路径,不用 path 模块,直接字符串就好了,这个包自己有格式化的</span><br><span class="line">* @param&#123;String&#125; romotePath 远程路径</span><br><span class="line">* @return&#123;undefined&#125; 返回个*</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">function main(localPath, romotePath) &#123;</span><br><span class="line">  &#x2F;&#x2F; 实例化</span><br><span class="line">  const sftp &#x3D; new Client();</span><br><span class="line">  sftp</span><br><span class="line">    .connect(config.romote)</span><br><span class="line">    &#x2F;&#x2F;  先递归删除服务器上的文件夹</span><br><span class="line">    .then(() &#x3D;&gt; &#123;</span><br><span class="line">      console.log(</span><br><span class="line">        &quot;----------------------------- 删除服务器缓存中... -----------------------------&quot;</span><br><span class="line">      );</span><br><span class="line">      return sftp.rmdir(romotePath, true);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((data) &#x3D;&gt; &#123;</span><br><span class="line">      console.log(</span><br><span class="line">        &quot;----------------------------- 删除完成 ----------------------------&quot;</span><br><span class="line">      );</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(() &#x3D;&gt; &#123;</span><br><span class="line">      console.log(</span><br><span class="line">        &quot;----------------------------- 连接成功,上传中... -----------------------------&quot;</span><br><span class="line">      );</span><br><span class="line">      return sftp.uploadDir(localPath, romotePath);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((data) &#x3D;&gt; &#123;</span><br><span class="line">      console.log(</span><br><span class="line">        &quot;----------------------------- 上传完成,及时清除缓存 ----------------------------&quot;</span><br><span class="line">      );</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((err) &#x3D;&gt; &#123;</span><br><span class="line">      console.log(</span><br><span class="line">        &quot;----------------------------- 失败了!出事了!快看看怎么回事! -----------------------------&quot;</span><br><span class="line">      );</span><br><span class="line">      console.log(err);</span><br><span class="line">    &#125;)</span><br><span class="line">    .finally(() &#x3D;&gt; &#123;</span><br><span class="line">      &#x2F;&#x2F; 断开连接</span><br><span class="line">      sftp.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">main(config.path.localPath, config.path.romotePath);</span><br></pre></td></tr></table></figure>
 <h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><p>在当前文件夹中打开终端输入</p>
-<pre><code>node ./sftp.js
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node .&#x2F;sftp.js</span><br></pre></td></tr></table></figure>
+<h4 id="配置package-json"><a href="#配置package-json" class="headerlink" title="配置package.json"></a>配置package.json</h4><p>在package.json 新增一个scripts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;generate&quot;:&quot;hexo generate &amp;&amp; node .&#x2F;sftp.js&quot;</span><br></pre></td></tr></table></figure>
+<p>这样就可以在生成完静态文件之后直接上传到服务器了</p>
  
       <!-- reward -->
       
@@ -239,8 +168,17 @@ main(config.path.localPath, config.path.romotePath);
    
   <nav class="article-nav">
     
+      <a href="/2021/02/25/js%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            js基础类型
+          
+        </div>
+      </a>
     
-      <a href="/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-nav-link">
+    
+      <a href="/2021/02/23/leetCode/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">爱生气的书店老板</div>
       </a>

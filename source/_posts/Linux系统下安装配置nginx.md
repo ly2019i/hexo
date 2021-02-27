@@ -25,12 +25,28 @@ Nginx能干的事情很多,这里简要罗列一-些：
 ##### 安装步骤
 
 ###### 安装依赖
+
+```
     wget http://nginx.org/download/nginx-1.12.2.tar.gz
+```
+
 ###### 解压缩
+
+```
     tar -zxvf nginx-1.12.2.tar.gz
+```
 ###### 进入解压好的目录
+
+```
     cd nginx-1.12.2/
+```
 ###### 执行配置
+
+```
     ./configure
+```
 ###### 编译安装(默认安装在/usr/local/nginx)
+
+```
     make && make install
+```
